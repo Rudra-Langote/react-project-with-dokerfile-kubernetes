@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    env: test
+  name: curr-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      env: test
+  template:
+    metadata:
+      labels:
+        env: test
+    spec:
+      containers:
+        - name: currency-converter
+          image: rudralangote/currency-converter:r
+          ports:
+            - containerPort: 80
